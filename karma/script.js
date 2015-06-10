@@ -15,8 +15,10 @@ function liCreate(name,points) {
 }
 
 $(document).ready(function() {
+  var array = [];
   var sorted = leaderboard2(data);
   for (var i=0; i<sorted.length; i++) {
-    $('body').append('<div><p>'+sorted[i].name+' '+sorted[i].points+'</p></div>')
+    array.push('<div><p>'+sorted[i].name+' '+sorted[i].points+'</p></div>')
   }
+  $('body').append(array);
 })
