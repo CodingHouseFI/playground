@@ -1,9 +1,9 @@
 $(document).ready(function(){
   $.getJSON("data.json").success(function(response){
     var data = response.data;
-
+    console.log(data)
     var sortedData = data.sort(function(a, b){
-      return a.points < b.points;
+      return b.points - a.points;
     });
 
     var leaders = [];
