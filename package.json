@@ -1,0 +1,23 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodingHouseFI/playground.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodingHouseFI/playground/issues"
+  },
+  "homepage": "https://github.com/CodingHouseFI/playground#readme",
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-mocha": "^2.1.1"
+  }
+}
