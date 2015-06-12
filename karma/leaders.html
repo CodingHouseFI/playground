@@ -3,29 +3,17 @@
   <head>
     <title>Leaderboard</title>
   </head>
-  <style type="text/css">
-    body {
-      text-align: center;
-    }
-    div{
-      border: 2px solid black;
-      width: 40%;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 5px;
-    }
-  </style>
+  <link href="style.css" type="text/css" rel="stylesheet">
   <body>
     <h1>Leaderboard</h1>
-    <div>
-      <ol id="leaderboard">
-        <li class="person" hidden>
-          <span class="name"> Collin </span>
-          <span class="placeholder"> -- </span>
-          <span class="points">12 points<span>
-        </li>
-      </ol>
+    <div class="person" hidden>
+      <span class="name"></span>
+      <input class="points remove" value="" disabled="true">
     </div>
+
+    <div class="people">
+    </div>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="script.js"></script>
   </body>
