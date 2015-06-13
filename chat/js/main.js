@@ -7,7 +7,7 @@ ref.authWithOAuthPopup("github", function(error, authData) {
     console.log("Authenticated successfully with payload:", authData);
     initChat(authData.github);
   }
-});
+}, {scope: 'user'});
 
 var initChat = function(user) {
   $("textarea").on("keyup", function(event) {
@@ -36,6 +36,7 @@ var initChat = function(user) {
       $messageDiv.find(".time").text(moment(newMessage.messageDate).format("lll"));
       $messageDiv.find(".author").text(newMessage.author);
       $messageDiv.find(".message").html(marked(newMessage.message));
+      $messageDiv.find(".avatar").attr("src", user.cachedUserProfile.avatar_url);
       $("#chat").prepend($messageDiv);
     }
   }, function (errorObject) {
