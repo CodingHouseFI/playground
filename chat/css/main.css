@@ -280,10 +280,6 @@ textarea {
 }
 
 div#chat div {
-  margin: 0.5em;
-  border: 1px solid #DDD;
-  padding: 0.2em;
-  border-radius: 10px;
 }
 
 span.author {
@@ -291,15 +287,15 @@ span.author {
   margin-right: 10px;
 }
 
-textarea {
+#chat-message {
   position: fixed;
   bottom: 0;
   width: 100%;
+  background-color: #DDD;
+  border: 2px solid #FFA500;
 }
 
 span.time {
   color: #999;
   font-size: 0.8em;
-  float: right;
-  padding: 5px;
 }
