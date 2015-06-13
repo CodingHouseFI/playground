@@ -8,7 +8,6 @@ $(document).ready(function() {
   };
 
   $("#data").on("keyup", function() {
-    console.log(this.value);
     updateUI(this.value);
   });
 });
