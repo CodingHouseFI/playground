@@ -1,10 +1,12 @@
 var assert = require("assert");
+var expect = require('chai').expect;
 var CH = require("./index.js");
 
 describe('CH', function() {
   describe("Cade's funky operate", function() {
     it("operates", function() {
       assert.equal(4, CH.operate('+')(2,2));
+      expect(CH.operate('+')(2,2)).to.equal(4);
       assert.equal(1, CH.operate('-')(5,4));
       assert.equal(12, CH.operate('*')(4,3));
       assert.equal(2, CH.operate('/')(4,2));
