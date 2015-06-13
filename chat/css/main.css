@@ -299,3 +299,28 @@ span.time {
   color: #999;
   font-size: 0.8em;
 }
+
+hr {
+  color: #FFA500;
+}
+
+.avatar {
+  width: 60px;
+  border-radius: 50%;
+  border: solid thin #FFA500;
+}
+
+#header {
+  position: relative;
+  border-bottom: solid thin #FFA500;
+  margin-bottom: 1em;
+}
+
+img#pbyfb {
+  transform: rotate(-34deg);
+  position: absolute;
+  left: 0;
+  margin: 0px;
+  top: 39px;
+  width: 122px;
+}

@@ -20,7 +20,7 @@ var initChat = function(user) {
   var sendMessage = function(textValue) {
     if (textValue) {
       ref.push({
-        author: user.displayName,
+        author: user,
         message: textValue,
         messageDate: Firebase.ServerValue.TIMESTAMP
       });
@@ -34,9 +34,9 @@ var initChat = function(user) {
     if (newMessage.author && newMessage.message && newMessage.message.trim().length > 0){
       var $messageDiv = $messageTemplate.clone().removeClass("hidden")
       $messageDiv.find(".time").text(moment(newMessage.messageDate).format("lll"));
-      $messageDiv.find(".author").text(newMessage.author);
+      $messageDiv.find(".author").text(newMessage.author.displayName || newMessage.author.email );
       $messageDiv.find(".message").html(marked(newMessage.message));
-      $messageDiv.find(".avatar").attr("src", user.cachedUserProfile.avatar_url);
+      $messageDiv.find(".avatar").attr("src", newMessage.author.cachedUserProfile.avatar_url);
       $("#chat").prepend($messageDiv);
     }
   }, function (errorObject) {
