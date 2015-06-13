@@ -290,3 +290,16 @@ span.author {
   font-weight: bold;
   margin-right: 10px;
 }
+
+textarea {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+span.time {
+  color: #999;
+  font-size: 0.8em;
+  float: right;
+  padding: 5px;
+}
