@@ -287,6 +287,15 @@ span.author {
   margin-right: 10px;
 }
 
+#preview {
+  background-color: #FFF;
+  margin-bottom: 15px;
+}
+
+div#preview div {
+  border-bottom: solid thin #FFA500;
+}
+
 #chat-message {
   position: fixed;
   bottom: 0;
