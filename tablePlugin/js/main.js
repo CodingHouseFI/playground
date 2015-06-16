@@ -34,6 +34,9 @@ var data = [
 ];
 
 $(document).ready(function() {
+  var headers = Object.keys(data[0]).map(function(e, i) {
+    return $("<th>", { text: e })
+  });
+
+  $("#table-head tr").append(headers);
 });
-
-
