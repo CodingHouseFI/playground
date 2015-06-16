@@ -9,23 +9,29 @@ $.fn.tableizer = function(data) {
 
     $table.find("thead tr").html($headers);
 
-    var $rows = data.map(function(user) {
-      var $rowData = userKeys.map(function(key, i) {
-        return $("<td>", { text: user[key], class: "data-value" })
+    function redrawTheTableBody() {
+      var $rows = data.map(function(user) {
+        var $rowData = userKeys.map(function(key, i) {
+          return $("<td>", { text: user[key], class: "data-value" })
+        });
+        return $("<tr></tr>").html($rowData);
       });
-      return $("<tr></tr>").html($rowData);
-    });
 
-    $table.find("tbody").html($rows);
+      $table.find("tbody").html($rows);
 
+      var direction;
+      $table.on("click", "thead th", function() {
+        var $th = $(this);
+        direction = $th.data("direction");
+        $th.data("direction", direction === "asc" ? "desc" : "asc");
+        var keyForSort = $th.text();
+        // data.sortUsing(keyForSort, direction);
+        redrawTheTableBody();
+      });
 
-    $table.on("click", "thead th", function() {
-      console.log($(this).data("direction"));
-      // read the text
-      // sort array based on that
-      // redraw the table
-    });
+      $(e).html($table);
+    }
 
-    $(e).html($table);
+    redrawTheTableBody();
   });
 };
