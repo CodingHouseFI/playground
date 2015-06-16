@@ -34,23 +34,5 @@ var data = [
 ];
 
 $(document).ready(function() {
-  var $table = $("<table class='table'><thead id='table-head'> <tr> </tr> </thead> <tbody id='table-body'> </tbody> </table>");
-
-  var userKeys = Object.keys(data[0]);
-  var $headers = userKeys.map(function(e, i) {
-    return $("<th>", { text: e, class: "header" })
-  });
-
-  $table.find("thead tr").html($headers);
-
-  var $rows = data.map(function(user) {
-    var $rowData = userKeys.map(function(key, i) {
-      return $("<td>", { text: user[key], class: "data-value" })
-    });
-    return $("<tr></tr>").html($rowData);
-  });
-
-  $table.find("tbody").html($rows);
-
-  $("#container").html($table);
+  $(".container").tableizer(data);
 });
