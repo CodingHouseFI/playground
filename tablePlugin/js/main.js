@@ -34,9 +34,19 @@ var data = [
 ];
 
 $(document).ready(function() {
-  var headers = Object.keys(data[0]).map(function(e, i) {
+  var $table = $("<table class='table'><thead id='table-head'> <tr> </tr> </thead> <tbody id='table-body'> </tbody> </table>");
+
+  var $headers = Object.keys(data[0]).map(function(e, i) {
     return $("<th>", { text: e })
   });
 
-  $("#table-head tr").append(headers);
+  $table.find("thead tr").html($headers);
+
+  var $rows = data.map(function(user) {
+    return $("<tr>");
+  });
+
+  $table.find("tbody").html($rows);
+
+  $("#container").html($table);
 });
