@@ -1,4 +1,7 @@
-$.fn.tableizer = function(data) {
+$.fn.tableizer = function(options) {
+  var data = options.data;
+  var search = options.search;
+
   this.each(function(i, e) {
     var $table = $("<table class='table'><thead class='table-head'> <tr> </tr> </thead> <tbody class='table-body'> </tbody> </table>");
 
@@ -19,12 +22,16 @@ $.fn.tableizer = function(data) {
       $th.data("direction", sortData[directionKey].opposite);
       var keyForSort = $th.text();
       data.sortUsing(keyForSort, sortData[directionKey].direction);
-      redrawTheTableBody();
+      redrawTheTableBody(data);
     });
 
     $(e).html($table);
 
-    function redrawTheTableBody() {
+    if (search) {
+      drawSearchBox();
+    }
+
+    function redrawTheTableBody(data) {
       var $rows = data.map(function(user) {
         var $rowData = userKeys.map(function(key, i) {
           return $("<td>", { text: user[key], class: "data-value" })
@@ -35,7 +42,22 @@ $.fn.tableizer = function(data) {
       $(e).find("tbody").html($rows);
     }
 
-    redrawTheTableBody();
+    function drawSearchBox() {
+      var $input = $('<input id="search-box" type="text" placeholder="Search ..." class="form-control">');
+      $input.keyup(function() {
+        var searchPhrase = this.value;
+        var filteredData = data.filter(function(user) {
+          // return user.login.match(searchPhrase);
+          return userKeys.some(function(key) {
+            return user[key].toString().match(searchPhrase);
+          });
+        });
+        redrawTheTableBody(filteredData);
+      });
+      $(e).prepend($input);
+    }
+
+    redrawTheTableBody(data);
   });
 };
 

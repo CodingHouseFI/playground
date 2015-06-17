@@ -34,5 +34,5 @@ var data = [
 ];
 
 $(document).ready(function() {
-  $(".container").tableizer(data);
+  $(".container").tableizer({ data: data, search: true });
 });
