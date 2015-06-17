@@ -44,15 +44,18 @@ $.fn.tableizer = function(options) {
 
     function drawSearchBox() {
       var $input = $('<input id="search-box" type="text" placeholder="Search ..." class="form-control">');
+      var timerId;
       $input.keyup(function() {
         var searchPhrase = this.value;
-        var filteredData = data.filter(function(user) {
-          // return user.login.match(searchPhrase);
-          return userKeys.some(function(key) {
-            return user[key].toString().match(searchPhrase);
+        clearTimeout(timerId);
+        timerId = setTimeout(function() {
+          var filteredData = data.filter(function(user) {
+            return userKeys.some(function(key) {
+              return user[key].toString().match(searchPhrase);
+            });
           });
-        });
-        redrawTheTableBody(filteredData);
+          redrawTheTableBody(filteredData);
+        }, 300);
       });
       $(e).prepend($input);
     }
@@ -61,10 +64,6 @@ $.fn.tableizer = function(options) {
   });
 };
 
-// var sortOrder = {
-//   asc: { opposite: 'desc', direction: -1 },
-//   desc: { opposite: 'asc', direction: 1 },
-// }
 Array.prototype.sortUsing = function(key, direction) {
   this.sort(function(a,b) {
     if (a[key] === b[key]) {
