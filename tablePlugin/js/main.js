@@ -608,5 +608,9 @@ var data = [
 
 
 $(document).ready(function() {
+<<<<<<< HEAD
   $(".container").tableizer({data: data, search: true});
+=======
+  $(".container").tableizer({ data: data, search: true });
+>>>>>>> origin/tablrizer
 });

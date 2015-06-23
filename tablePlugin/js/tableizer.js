@@ -27,12 +27,10 @@ $.fn.tableizer = function(options) {
 
     $(e).html($table);
 
-    $("#search").on("keypress", function (){
-      var find = data.filter(function(object){
-        return object.match(this.value);
-      });
-      // redrawTheTableBody(find);
-    });
+
+    if (search) {
+      drawSearchBox();
+    }
 
     function redrawTheTableBody(data) {
       var $rows = data.map(function(user) {
@@ -45,19 +43,16 @@ $.fn.tableizer = function(options) {
       $(e).find("tbody").html($rows);
     }
 
-    if (search){
-      drawSearchBox();
-    }
 
-    function drawSearchBox(){
-      var $input = $("<input id='search-box' type='text'>");
+    function drawSearchBox() {
+      var $input = $('<input id="search-box" type="text" placeholder="Search ..." class="form-control">');
       var timerId;
-      $input.on("keyup", function(){
+      $input.keyup(function() {
         var searchPhrase = this.value;
         clearTimeout(timerId);
-        timerId = setTimeout(function(){
-          var filteredData = data.filter(function(user){
-            return userKeys.some(function(key){
+        timerId = setTimeout(function() {
+          var filteredData = data.filter(function(user) {
+            return userKeys.some(function(key) {
               return user[key].toString().match(searchPhrase);
             });
           });
