@@ -4,10 +4,6 @@ var fs = require("fs"),
     url = require('url'),
     exec = require("child_process").exec;
 
-// exec("df -h", function(err, stdout, stderr) {
-//   console.log(err, stdout, stderr);
-// });
-
 http.createServer(responseHandler).listen(8888);
 
 function responseHandler(req, res) {
@@ -15,10 +11,6 @@ function responseHandler(req, res) {
     res.end("");
     return;
   }
-
-  // exec("vm_stat", function(err, stdout, stderr) {
-  //   res.end(stdout.match(/free:\s+(\d+)\./)[1]);
-  // });
 
   if (req.url === "/") {
     // server index.html
@@ -34,4 +26,29 @@ function responseHandler(req, res) {
       }
     });
   }
-}
+
+  //calc
+  if (req.url.match("/Calc/")) {
+      var calc = eval(req.url.match(/Calc\/(.*)/)[1]);
+      res.write(calc.toString());
+      res.end();
+  }
+
+    ///gravatarUrl/samer.buna@gmail.com
+  if (req.url.match("/gravatarUrl/")) {
+    var md5 = require('MD5');
+    var grav = md5(req.url.match(/gravatarUrl\/(.*)/)[1]);
+    res.write("http://www.gravatar.com/avatar/"+grav);
+    res.end();
+
+  }
+
+  ///Counts/A Sentence here
+  if (req.url.match("/Counts/")) {
+      var count = req.url.match(/Counts\/(.*)/)[1];
+      res.write(count.replace(/%20/g," ").length.toString());
+      res.end();
+  }
+
+
+} // end handleRequest
